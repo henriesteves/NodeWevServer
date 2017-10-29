@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 app.use(express.static(__dirname + '/public'));
 
 hbs.registerHelper('getCurrentYear', () => {
-    return new Date().getFullYear;
+    return new Date().getFullYear();
 });
 
 hbs.registerHelper('screamIt', (text) => {
@@ -40,8 +40,7 @@ hbs.registerHelper('screamIt', (text) => {
 app.get('/', (req, res) => {
     res.render('home.hbs', {
         pageTitle: 'Home Page',
-        welcomeMessage: 'Wecome to my website',
-        currentYear: new Date().getFullYear()
+        welcomeMessage: 'Wecome to my website'
     });
 });
 
@@ -62,8 +61,7 @@ app.get('/json', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.render('about.hbs', {
-        pageTitle: 'About Page',
-        currentYear: new Date().getFullYear()
+        pageTitle: 'About Page'
     });
 });
 
@@ -75,6 +73,12 @@ app.get('/bad', (req, res) => {
    res.send({
        errorMessage: 'Unable to handle request'
    })
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Projects'
+    });
 });
 
 app.listen(port, () => {
